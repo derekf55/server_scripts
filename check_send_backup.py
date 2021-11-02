@@ -77,18 +77,19 @@ def main():
             print("Going to remove an old backup")
             removeOldestBackup(containerId)
         remoteFolder = os.path.join(REMOTE_BACKUP_FOLDER,each)
-        connection = pysftp.Connection(host=ip,username=username,password=password,port=port,cnopts=cnopts)
-        x = connection.put(fullPath,remoteFolder)
-        connection.close()
+        try:
+            connection = pysftp.Connection(host=ip,username=username,password=password,port=port,cnopts=cnopts)
+            x = connection.put(fullPath,remoteFolder)
+            connection.close()
+        except Exception as e:
+            print('Failed to send backup')
+            return False
+        
         print(x)
         os.system(f'rm {fullPath}')
-
-
-def test():
-    connection = pysftp.Connection(host=ip,username=username,password=password,port=port,cnopts=cnopts)
-    x = connection.listdir(REMOTE_BACKUP_FOLDER)
-    connection.close()
-    print(x)
+    return True
 
 if __name__ == '__main__':
-    main()
+    result = main()
+    while result != True:
+        result = main()
