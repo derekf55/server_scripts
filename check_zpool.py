@@ -1,7 +1,6 @@
 import subprocess
 import derek_functions as df
 from collections import defaultdict
-import time
 
 class ZpoolStatus:
 
@@ -34,9 +33,7 @@ class ZpoolStatus:
 
 def main():
     x = ZpoolStatus()
-    while True:
-        x.get_pool_status()
-        time.sleep(60)
+    x.get_pool_status()
 
 if __name__ == '__main__':
     main()
