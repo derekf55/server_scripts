@@ -4,7 +4,7 @@ Description=Sends notification when zpool is down
 [Service]
 Type=simple
 ExecStart=/usr/bin/python3 /home/root/server_scripts/check_zpool.py 
-WorkingDirectory=/home/root/server_scripts
+WorkingDirectory=/root/server_scripts
 Restart=always
 RestartSec=3
 User=root
