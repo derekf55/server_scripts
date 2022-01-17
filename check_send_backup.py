@@ -3,6 +3,7 @@ import os
 import pysftp
 import datetime
 import derek_functions as df
+import time
 
 LOCAL_BACKUP_FOLDER = '/var/lib/vz/dump'
 #LOCAL_BACKUP_FOLDER = 'Z:\\Proxmox_backups\\dump'
@@ -83,6 +84,7 @@ def main():
             connection.close()
         except Exception as e:
             print('Failed to send backup')
+            time.sleep(60)
             return False
         
         print(x)
