@@ -1,5 +1,5 @@
 [Unit]
-Sends notification when zpool is down
+Description=Sends notification when zpool is down
 
 [Service]
 Type=simple
